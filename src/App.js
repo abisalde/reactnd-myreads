@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {Route} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 
 import './App.css';
 
@@ -49,24 +49,25 @@ const App = () => {
 
   return (
     <div className='app'>
-      <Route
-        exact
-        path='/'
-        render={() => (
+      <Routes>
+        <Route
+          path='/'
+          element={
           <BookHome
             myBookShelves={myBookShelves}
             onChangeBookShelf={changeBookShelf}
             myBooks={myBooks}
             isLoading={isLoading}
           />
-        )}
-      />
-      <Route
-        path='/search'
-        render={() => (
+        }
+        />
+        <Route
+          path='/search'
+          element={
           <BookSearch myBooks={myBooks} onChangeBookShelf={changeBookShelf} />
-        )}
-      />
+        }
+        />
+      </Routes>
     </div>
   );
 };
